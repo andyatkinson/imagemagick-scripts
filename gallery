@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# assumes a directory of png files
+
+mkdir output
+for image_file in *.png
+do
+  convert -define jpeg:size=400x200 $image_file -gravity NorthWest -thumbnail 400x200^ -extent 400x200 \
+   -bordercolor '#555' -border 4 output/${image_file/%png/jpg}
+done
